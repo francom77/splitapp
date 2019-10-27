@@ -5,6 +5,7 @@ from datetime import datetime
 from django.conf import settings
 from django.core.mail import send_mail as dj_send_email
 from django.utils.text import slugify
+
 from pytz import timezone
 
 
