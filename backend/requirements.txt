@@ -12,6 +12,7 @@ Django==2.1.4
 django-allauth==0.38.0
 django-celery-beat==1.4.0
 django-celery-results==1.0.4
+django-cors-headers==3.0.2
 django-des==2.4.1
 django-extensions==2.1.4
 django-filter==2.0.0

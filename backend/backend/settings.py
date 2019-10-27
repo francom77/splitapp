@@ -37,19 +37,32 @@ ALLOWED_HOSTS = ['*']
 #  Application definition
 #############################################
 
-INSTALLED_APPS = [
+
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'django_celery_results',
-    'django_celery_beat',
-
-    'apps.core'
 ]
+
+THIRD_PARTY_APPS = [
+    "rest_framework",
+    "rest_framework.authtoken",
+    "django_celery_results",
+    "django_filters",
+    "corsheaders"
+]
+
+LOCAL_APPS = [
+    "apps.core",
+    "apps.events",
+    "apps.profiles",
+    "apps.wallet",
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 #############################################
 #  MIDDLEWARE

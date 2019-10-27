@@ -1,20 +1,20 @@
 from django.utils.translation import ugettext as _
 
-ACTIVE = 'active'
-CANCELED = 'canceled'
+from apps.events import constants as cts
 
 
 class EventStateChoices(object):
 
     CHOICES = (
-        (ACTIVE, _("Activo")),
-        (CANCELED, _("Cancelado")),
+        (cts.ACTIVE, _("Activo")),
+        (cts.CANCELED, _("Cancelado")),
     )
 
 
 class MembershipStateChoices(object):
 
     CHOICES = (
-        (ACTIVE, _("Activa")),
-        (CANCELED, _("Cancelada")),
+        (cts.ACTIVE, _("Activa")),
+        (cts.PAID, _("Pagada")),
+        (cts.CANCELED, _("Cancelada")),
     )

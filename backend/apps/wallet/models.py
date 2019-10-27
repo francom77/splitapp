@@ -7,7 +7,7 @@ from apps.core.models import BaseModel
 
 class Movement(BaseModel):
     profile = models.ForeignKey(
-        'profiles.Profile',
+        'profiles.UserProfile',
         on_delete=models.CASCADE,
         related_name="movements",
         related_query_name="movement",
@@ -25,7 +25,7 @@ class MercadoPagoPayment(Movement):
 
 class MembershipPayment(Movement):
     membership = models.ForeignKey(
-        'profiles.Profile',
+        'profiles.UserProfile',
         on_delete=models.CASCADE,
         related_name="payments",
         related_query_name="payment",
