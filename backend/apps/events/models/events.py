@@ -5,7 +5,6 @@ from django.core.validators import MinValueValidator
 from django.db import models
 
 from apps.core.models import BaseModel
-from apps.events import constants as events_constants
 from apps.events.choices import EventStateChoices, MembershipStateChoices
 from apps.events.state_machines import (
     EventStateMachine,
@@ -36,7 +35,7 @@ class Event(BaseModel):
     state = models.CharField(
         max_length=25,
         choices=EventStateChoices.CHOICES,
-        default=events_constants.ACTIVE
+        default=EventStateChoices.ACTIVE
     )
 
 
@@ -59,5 +58,5 @@ class Membership(BaseModel):
     state = models.CharField(
         max_length=25,
         choices=MembershipStateChoices.CHOICES,
-        default=events_constants.ACTIVE
+        default=MembershipStateChoices.ACTIVE
     )

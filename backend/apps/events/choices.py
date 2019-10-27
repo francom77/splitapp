@@ -4,17 +4,22 @@ from apps.events import constants as cts
 
 
 class EventStateChoices(object):
+    ACTIVE = cts.ACTIVE
+    CANCELED = cts.CANCELED
 
     CHOICES = (
-        (cts.ACTIVE, _("Activo")),
-        (cts.CANCELED, _("Cancelado")),
+        (ACTIVE, _("Activo")),
+        (CANCELED, _("Cancelado")),
     )
 
 
 class MembershipStateChoices(object):
+    ACTIVE = cts.ACTIVE
+    CANCELED = cts.CANCELED
+    PAID = cts.PAID
 
     CHOICES = (
-        (cts.ACTIVE, _("Activa")),
-        (cts.PAID, _("Pagada")),
-        (cts.CANCELED, _("Cancelada")),
+        (ACTIVE, _("Activa")),
+        (PAID, _("Pagada")),
+        (CANCELED, _("Cancelada")),
     )
