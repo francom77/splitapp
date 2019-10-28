@@ -20,10 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 if not env('SECRET_KEY'):
-    warnings.warn((
-                      "Please define SECRET_KEY before importing {0}, as a fallback "
-                      "for when the environment variable is not available."
-                  ).format(__name__))
+    warnings.warn(
+        (
+            "Please define SECRET_KEY before importing {0}, as a fallback "
+            "for when the environment variable is not available."
+        ).format(__name__)
+    )
 else:
     SECRET_KEY = env('SECRET_KEY')
 
@@ -201,3 +203,20 @@ CELERY_RESULT_BACKEND = 'django-db'
 
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
+
+
+# Rest Framework
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.AdminRenderer',
+    ]
+}

@@ -43,7 +43,7 @@ class Membership(BaseModel):
 
     state_machine = MembershipStateMachine.TRANSITIONS
 
-    profile = models.ForeignKey(
+    owner = models.ForeignKey(
         'profiles.UserProfile',
         on_delete=models.CASCADE,
         related_name="memberships",
