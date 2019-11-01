@@ -37,6 +37,9 @@ class EventViewSetTestCase(ModelViewSetTestCaseMixin, APITestCase):
         }
         return data
 
+    def test_delete(self):
+        pass
+
 
 class MembershipViewSetTestCase(ModelViewSetTestCaseMixin, APITestCase):
     ModelClass = Membership

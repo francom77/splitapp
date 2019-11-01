@@ -1,4 +1,4 @@
-from rest_framework import permissions, viewsets
+from rest_framework import mixins, permissions, viewsets
 
 from apps.core.permissions import IsObjectOwner, IsStafforListIsForbidden
 from apps.events.choices import EventStateChoices, MembershipStateChoices
@@ -7,7 +7,13 @@ from apps.events.models import Event, Membership
 from apps.events.serializers import EventSerializer, MembershipSerializer
 
 
-class EventModelViewSet(viewsets.ModelViewSet):
+class EventModelViewSet(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    viewsets.GenericViewSet,
+):
     queryset = Event.objects.order_by('-created_at').filter(
         state=EventStateChoices.ACTIVE
     )
@@ -19,7 +25,12 @@ class EventModelViewSet(viewsets.ModelViewSet):
     )
 
 
-class MembershipModelViewSet(viewsets.ModelViewSet):
+class MembershipModelViewSet(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    viewsets.GenericViewSet,
+):
     queryset = Membership.objects.order_by('-created_at').filter(
         state=MembershipStateChoices.PAID
     )

@@ -6,7 +6,7 @@ from apps.core.models import BaseModel
 
 
 class Movement(BaseModel):
-    profile = models.ForeignKey(
+    owner = models.ForeignKey(
         'profiles.UserProfile',
         on_delete=models.CASCADE,
         related_name="movements",
@@ -17,6 +17,7 @@ class Movement(BaseModel):
         max_digits=10,
         default=Decimal('0'),
     )
+    description = models.TextField()
 
 
 class MercadoPagoPayment(Movement):

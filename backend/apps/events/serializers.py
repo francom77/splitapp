@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from apps.core.fields import CurrentProfileDefault
-from apps.events.choices import MembershipStateChoices
 from apps.events.models import Event, Membership
 
 
