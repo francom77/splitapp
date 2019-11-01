@@ -1,0 +1,53 @@
+[
+  {
+    "model": "auth.User",
+    "pk": 1,
+    "fields": {
+      "username": "franco@splitapp.com",
+      "password": "argon2$argon2i$v=19$m=512,t=2,p=2$cHc2aGtoOVpWRGhZ$3TX+rw4I1xLASUNigzEwpw"
+    }
+
+  },
+  {
+    "model": "auth.User",
+    "pk": 2,
+    "fields": {
+      "username": "jose@splitapp.com",
+      "password": "argon2$argon2i$v=19$m=512,t=2,p=2$cHc2aGtoOVpWRGhZ$3TX+rw4I1xLASUNigzEwpw"
+    }
+
+  },
+  {
+    "model": "auth.User",
+    "pk": 3,
+    "fields": {
+      "username": "otrogato@splitapp.com",
+      "password": "argon2$argon2i$v=19$m=512,t=2,p=2$cHc2aGtoOVpWRGhZ$3TX+rw4I1xLASUNigzEwpw"
+    }
+
+  },
+  {
+    "model":"profiles.UserProfile",
+    "pk": 1,
+    "fields":{
+        "user_id": 1,
+        "phone_number": "543512549191"
+    }
+  },
+  {
+    "model":"profiles.UserProfile",
+    "pk": 2,
+    "fields":{
+        "user_id": 2,
+        "phone_number": "543512549191"
+    }
+  },
+  {
+    "model":"profiles.UserProfile",
+    "pk": 3,
+    "fields":{
+        "user_id": 3,
+        "phone_number": "543512549191"
+    }
+  }
+]

@@ -9,6 +9,6 @@ class EventStateMachine:
 
 class MembershipStateMachine:
     TRANSITIONS = {
-        cts.ACTIVE: {cts.CANCELED, cts.PAID},
+        cts.INITIAL: {cts.CANCELED, cts.PAID},
         cts.PAID: {cts.CANCELED},
     }

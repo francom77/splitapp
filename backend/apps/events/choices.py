@@ -14,12 +14,12 @@ class EventStateChoices(object):
 
 
 class MembershipStateChoices(object):
-    ACTIVE = cts.ACTIVE
-    CANCELED = cts.CANCELED
+    INITIAL = cts.INITIAL
     PAID = cts.PAID
+    CANCELED = cts.CANCELED
 
     CHOICES = (
-        (ACTIVE, _("Activa")),
+        (INITIAL, _("Inicial")),
         (PAID, _("Pagada")),
         (CANCELED, _("Cancelada")),
     )

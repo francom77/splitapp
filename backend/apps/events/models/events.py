@@ -58,5 +58,5 @@ class Membership(BaseModel):
     state = models.CharField(
         max_length=25,
         choices=MembershipStateChoices.CHOICES,
-        default=MembershipStateChoices.ACTIVE
+        default=MembershipStateChoices.INITIAL
     )

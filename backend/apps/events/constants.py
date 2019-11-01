@@ -2,3 +2,4 @@
 ACTIVE = 'active'
 CANCELED = 'canceled'
 PAID = 'paid'
+INITIAL = 'initial'
