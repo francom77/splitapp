@@ -42,6 +42,15 @@ class Event(BaseModel):
         default=EventStateChoices.ACTIVE
     )
 
+    def is_full(self):
+        paid_memberships = self.memberships.filter(
+            state=MembershipStateChoices.PAID
+        ).count()
+        return (
+            self.max_memberships is not None and
+            paid_memberships >= self.max_memberships
+        )
+
 
 class Membership(BaseModel):
 

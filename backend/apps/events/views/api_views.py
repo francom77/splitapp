@@ -2,6 +2,7 @@ from rest_framework import permissions, viewsets
 
 from apps.core.permissions import IsObjectOwner, IsStafforListIsForbidden
 from apps.events.choices import EventStateChoices, MembershipStateChoices
+from apps.events.exceptions import EventIsFullAPIException
 from apps.events.models import Event, Membership
 from apps.events.serializers import EventSerializer, MembershipSerializer
 
@@ -28,3 +29,9 @@ class MembershipModelViewSet(viewsets.ModelViewSet):
         IsObjectOwner,
         IsStafforListIsForbidden
     )
+
+    def perform_create(self, serializer):
+        event = serializer.validated_data.get('event')
+        if event.is_full():
+            raise EventIsFullAPIException()
+        super(MembershipModelViewSet, self).perform_create(serializer=serializer)
