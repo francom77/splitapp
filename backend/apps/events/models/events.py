@@ -25,9 +25,13 @@ class Event(BaseModel):
     )
     date_time = models.DateTimeField()
     name = models.CharField(max_length=250)
-    max_memberships = models.PositiveIntegerField(null=True, blank=True)
+    max_memberships = models.PositiveIntegerField(
+        validators=[MinValueValidator(1)],
+        null=True,
+        blank=True,
+    )
     suscription_amount = models.DecimalField(
-        validators=(MinValueValidator(0),),
+        validators=[MinValueValidator(Decimal('0'))],
         decimal_places=2,
         max_digits=10,
         default=Decimal('0'),
@@ -40,6 +44,8 @@ class Event(BaseModel):
 
 
 class Membership(BaseModel):
+
+    unique_together = ['owner', 'event']
 
     state_machine = MembershipStateMachine.TRANSITIONS
 

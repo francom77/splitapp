@@ -7,10 +7,20 @@ from apps.events.models import Event, Membership
 
 class MembershipSerializer(serializers.ModelSerializer):
     owner = serializers.HiddenField(default=CurrentProfileDefault())
+    state_display = serializers.CharField(source='get_state_display', read_only=True)
 
     class Meta:
         model = Membership
-        fields = ['id', 'event', 'owner']
+        fields = ['id', 'event', 'owner', 'state_display']
+
+    def validate(self, data):
+        event = data.get('event')
+        membership_count = event.memberships.filter(
+            state=MembershipStateChoices.PAID
+        ).count()
+        if event.max_memberships is not None and membership_count >= event.max_memberships:
+            raise serializers.ValidationError("Max number of members reached")
+        return data
 
 
 class EventSerializer(serializers.ModelSerializer):

@@ -25,7 +25,7 @@ if not User.objects.filter(is_superuser=True).exists():
    user.is_superuser = True
    user.is_staff = True
    user.set_password('qwerty123')
-   user.email = 'matiroson@gmail.com'
+   user.email = 'francomat77@gmail.com'
    user.username = 'admin'
    user.save()
 " | python3 manage.py shell || exit 1

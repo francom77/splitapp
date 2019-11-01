@@ -1,4 +1,7 @@
 from datetime import datetime
+
+from django.urls import reverse
+from rest_framework import status
 from rest_framework.test import APITestCase
 
 from apps.core.tests.mixins import ModelViewSetTestCaseMixin
@@ -53,6 +56,21 @@ class MembershipViewSetTestCase(ModelViewSetTestCaseMixin, APITestCase):
             'event': self.event.pk
         }
         return data
+
+    def test_create_with_max_of_members(self):
+        self.event.max_memberships = 1
+        self.event.save()
+        EventsFakeFactory.make_membership(event=self.event)
+
+        data = self._get_create_data()
+        url = reverse(
+            '{namespace}:{basename}-list'.format(
+                namespace=self.namespace,
+                basename=self.basename
+            )
+        )
+        response = self.client.post(url, data=data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_put(self):
         pass
