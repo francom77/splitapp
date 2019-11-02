@@ -26,10 +26,19 @@ class MercadoPagoPayment(Movement):
 
 class MembershipPayment(Movement):
     membership = models.ForeignKey(
-        'profiles.UserProfile',
+        'events.Membership',
         on_delete=models.CASCADE,
         related_name="payments",
         related_query_name="payment",
+    )
+
+
+class PaymentReceived(Movement):
+    sender = models.ForeignKey(
+        'profiles.UserProfile',
+        on_delete=models.CASCADE,
+        related_name="sent_payment",
+        related_query_name="sent_payments",
     )
 
 

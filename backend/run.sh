@@ -17,6 +17,7 @@ fi
 
 echo "[run] Create superuser"
 echo "from django.contrib.auth import get_user_model
+from apps.profiles.models import UserProfile
 User = get_user_model()
 if not User.objects.filter(is_superuser=True).exists():
    user = User()
@@ -28,6 +29,7 @@ if not User.objects.filter(is_superuser=True).exists():
    user.email = 'francomat77@gmail.com'
    user.username = 'admin'
    user.save()
+   UserProfile.objects.create(user=user, phone_number='543512549191')
 " | python3 manage.py shell || exit 1
 
 
